@@ -1,5 +1,6 @@
 <template>
     <div class="container">
+        <navbar></navbar>
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card card-default">
@@ -15,7 +16,11 @@
 </template>
 
 <script>
+    import Navbar from '../components/Navbar'
     export default {
-        name: "MainApp",
+        name: "main-app",
+        components: {
+            Navbar,
+        }
     }
 </script>
