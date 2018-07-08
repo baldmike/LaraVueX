@@ -1,15 +1,10 @@
 <template>
-    <div class="container">
+    <div class="container-fluid">
         <navbar></navbar>
         <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card card-default">
-                    <div class="card-header">Main App</div>
-
-                    <div class="card-body">
-                        <h1>Hello World.</h1>
-                    </div>
-                </div>
+            <div class="col-md">
+                <!-- <component v-bind:is="component"></component> -->
+                <router-view></router-view>
             </div>
         </div>
     </div>
@@ -17,10 +12,12 @@
 
 <script>
     import Navbar from '../components/Navbar'
+
     export default {
         name: "main-app",
         components: {
             Navbar,
-        }
+        },
+        // props: ['component']
     }
 </script>
