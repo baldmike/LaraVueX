@@ -48225,9 +48225,83 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "pagex"
+    name: "pagex",
+    data: function data() {
+        return {
+            time: {
+                hour: 4,
+                minute: 20,
+                ap: 'PM'
+            }
+        };
+    },
+
+    methods: {
+        increaseHour: function increaseHour() {
+            if (this.time.hour == 11) {
+                this.amPm();
+            }
+            if (this.time.hour == 12) {
+                this.time.hour = +1;
+            } else {
+                this.time.hour += 1;
+            }return this.time.hour;
+        },
+        decreaseHour: function decreaseHour() {
+            if (this.time.hour == 1) {
+                this.time.hour = 12;
+                this.amPm();
+            } else {
+                this.time.hour -= 1;
+            }return this.time.hour;
+        },
+        increaseMinute: function increaseMinute() {
+            if (this.time.minute == 55) {
+                this.time.minute = ("0" + "0").slice(-2);
+                this.increaseHour();
+            } else if (this.time.hour == 12) {
+                this.time.hour = 1;
+            } else if (this.time.minute == "00") {
+                this.time.minute = ("0" + "5").slice(-2);
+            } else if (this.time.minute == "05") {
+                this.time.minute = 10;
+            } else {
+                this.time.minute += 5;
+            }return this.time.minute;
+        },
+        decreaseMinute: function decreaseMinute() {
+            if (this.time.minute == "00") {
+                this.time.minute = 55;
+                this.decreaseHour();
+            } else if (this.time.minute == "05") {
+                this.time.minute = ("0" + "0").slice(-2);
+            } else if (this.time.minute == "10") {
+                this.time.minute = ("0" + "5").slice(-2);
+            } else {
+                this.time.minute -= 5;
+            }return this.time.minute;
+        },
+        amPm: function amPm() {
+            if (this.time.ap == "PM") {
+                this.time.ap = "AM";
+            } else {
+                this.time.ap = "PM";
+            }return this.time.ap;
+        }
+    }
 });
 
 /***/ }),
@@ -48238,36 +48312,157 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "container" }, [
+    _c(
+      "div",
+      { staticClass: "col-md-2", staticStyle: { "text-align": "center" } },
+      [
+        _c("table", { staticClass: "table" }, [
+          _c("tbody", [
+            _c("tr", [
+              _c(
+                "td",
+                {
+                  on: {
+                    click: function($event) {
+                      _vm.increaseHour()
+                    }
+                  }
+                },
+                [
+                  _c(
+                    "i",
+                    {
+                      staticClass: "material-icons",
+                      staticStyle: { "font-size": "3em" }
+                    },
+                    [_vm._v("add_circle")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "td",
+                {
+                  on: {
+                    click: function($event) {
+                      _vm.increaseMinute()
+                    }
+                  }
+                },
+                [
+                  _c(
+                    "i",
+                    {
+                      staticClass: "material-icons",
+                      staticStyle: { "font-size": "3em" }
+                    },
+                    [_vm._v("add_circle")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "td",
+                {
+                  on: {
+                    click: function($event) {
+                      _vm.amPm()
+                    }
+                  }
+                },
+                [
+                  _c(
+                    "i",
+                    {
+                      staticClass: "material-icons",
+                      staticStyle: { "font-size": "3em" }
+                    },
+                    [_vm._v("add_circle")]
+                  )
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _c("td", [_vm._v(_vm._s(_vm.time.hour))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(_vm.time.minute))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(_vm.time.ap))])
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _c(
+                "td",
+                {
+                  on: {
+                    click: function($event) {
+                      _vm.decreaseHour()
+                    }
+                  }
+                },
+                [
+                  _c(
+                    "i",
+                    {
+                      staticClass: "material-icons",
+                      staticStyle: { "font-size": "3em" }
+                    },
+                    [_vm._v("remove_circle")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "td",
+                {
+                  on: {
+                    click: function($event) {
+                      _vm.decreaseMinute()
+                    }
+                  }
+                },
+                [
+                  _c(
+                    "i",
+                    {
+                      staticClass: "material-icons",
+                      staticStyle: { "font-size": "3em" }
+                    },
+                    [_vm._v("remove_circle")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "td",
+                {
+                  on: {
+                    click: function($event) {
+                      _vm.amPm()
+                    }
+                  }
+                },
+                [
+                  _c(
+                    "i",
+                    {
+                      staticClass: "material-icons",
+                      staticStyle: { "font-size": "3em" }
+                    },
+                    [_vm._v("remove_circle")]
+                  )
+                ]
+              )
+            ])
+          ])
+        ])
+      ]
+    )
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "headline" }, [
-      _c("h1", [_vm._v("This is PageX")]),
-      _vm._v(" "),
-      _c("h1", [_vm._v("This is PageX")]),
-      _vm._v(" "),
-      _c("h1", [_vm._v("This is PageX")]),
-      _vm._v(" "),
-      _c("h1", [_vm._v("This is PageX")]),
-      _vm._v(" "),
-      _c("h1", [_vm._v("This is PageX")]),
-      _vm._v(" "),
-      _c("h1", [_vm._v("This is PageX")]),
-      _vm._v(" "),
-      _c("h1", [_vm._v("This is PageX")]),
-      _vm._v(" "),
-      _c("h1", [_vm._v("This is PageX")]),
-      _vm._v(" "),
-      _c("h1", [_vm._v("This is PageX")]),
-      _vm._v(" "),
-      _c("h1", [_vm._v("This is PageX")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
